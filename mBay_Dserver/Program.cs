@@ -9,14 +9,17 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Syncfusion.Blazor;
 
+Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjU4Mzg4NUAzMjMyMmUzMDJlMzBOYjhVTUl0TE81WjFwS0NVWWc1TnF6UVhIUDBuVXc3QmtlcWU3RjBobzFvPQ");
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductPriceRepository, ProductPriceRepository>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();//ikisi arasýnda eþleþtirme yapýyoruz.
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();//ikisi arasÃ½nda eÃ¾leÃ¾tirme yapÃ½yoruz.
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));//path
 builder.Services.AddRazorPages();
+builder.Services.AddSyncfusionBlazor();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 
